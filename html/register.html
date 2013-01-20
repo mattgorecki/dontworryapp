@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Login page - Don't Worry</title>
+    <title>Register - Don't Worry</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responsive HTML template for Your company">
     <meta name="author" content="Oskar Żabik (oskar.zabik@gmail.com)">
@@ -11,7 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/typica-login.css">
+    <link rel="stylesheet" href="css/dontworry.css">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -38,71 +38,49 @@
       </div>
     </div>
 
+
     <div class="container">
-        <div class="row">
 
-        	<div class="span6">
-        		
-        		<div class="register-info-wraper">
-        			<div id="register-info">
-        			
-        				<h1>You are about 30 seconds away from using this awesome app. Good choice!</h1>
-        			
-        				<ul dir="rtl">
-        					<li>Blah blah blah</li>
-        					<li>That's why this app is so awesome</li>
-        					<li>!So register, like, right NOW</li>
-        					<li>Or don't, who cares</li>
-        				</ul>
-        				
-        			</div>
-        		</div>
+<div id="register-wraper">
+                    <form id="register-form" class="form">
+                        <legend>Register with<br> <span class="blue">Don't Worry</span></legend>
+                    
+                        <div class="body">
+                            <!-- first name -->
+                            <div class="control-group control-inline">
+                                <label for="name">First name</label>
+                                <input name="name" class="input-medium" type="text">
+                            </div>
+                            <!-- last name -->
+                            <div class="control-group control-inline">
+                                <label for="surname">Last name</label>
+                                <input name="surname" class="input-medium" type="text">
+                            </div>
+                            <!-- username -->
+                            <label>Username</label>
+                            <input class="input-huge" type="text">
+                            <!-- email -->
+                            <label>E-mail</label>
+                            <input class="input-huge" type="text">
+                            <!-- password -->
+                            <label>Password</label>
+                            <input class="input-huge" type="text">
 
-        	</div>
+                        </div>
+                    
+                        <div class="footer">
+                            <label class="checkbox inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1"> I agree to something I will never read
+                            </label>
+                            <a href="./create.html" class="btn btn-success">Register</a>
+                        </div>
+                    </form>
+                </div>
 
-        	<div class="span6">
-        		<div id="register-wraper">
-        		    <form id="register-form" class="form">
-        		        <legend>Register to <span class="blue">Don't Worry</span></legend>
-        		    
-        		        <div class="body">
-        		        	<!-- first name -->
-        		        	<div class="control-group control-inline">
-        		        		<label for="name">First name</label>
-        		        		<input name="name" class="input-medium" type="text">
-        		        	</div>
-        		        	<!-- last name -->
-        		        	<div class="control-group control-inline">
-        		        		<label for="surname">Last name</label>
-        		        		<input name="surname" class="input-medium" type="text">
-        		        	</div>
-        		        	<!-- username -->
-        		        	<label>Username</label>
-        		        	<input class="input-huge" type="text">
-        		        	<!-- email -->
-        		        	<label>E-mail</label>
-        		        	<input class="input-huge" type="text">
-        		        	<!-- password -->
-        		        	<label>Password</label>
-        		        	<input class="input-huge" type="text">
-
-        		        </div>
-        		    
-        		        <div class="footer">
-        		            <label class="checkbox inline">
-        		                <input type="checkbox" id="inlineCheckbox1" value="option1"> I agree to something I will never read
-        		            </label>
-        		            <a href="./index.html" class="btn btn-success">Register</a>
-        		        </div>
-        		    </form>
-        		</div>
-        	</div>
-
-        </div>
     </div>
 
     <footer class="white navbar-fixed-bottom">
-      Alread have an account? <a href="login.html" class="btn btn-black">Sign in</a>
+      Already have an account? <a href="login.html" class="btn btn-black">Sign in</a>
     </footer>
 
 
@@ -112,7 +90,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/backstretch.min.js"></script>
-    <script src="js/typica-login.js"></script>
+    <script src="js/dontworry.js"></script>
 
   </body>
 </html>

@@ -9,7 +9,7 @@ html {
 
 /* line 13, ../sass/typica-login.scss */
 body {
-  background: url(../dontworry-lowres50%.jpg) no-repeat center center fixed;
+  background: url('../dontworry-lowres.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -100,7 +100,7 @@ body {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 33%;
   display: block;
   margin-top: -185px;
   margin-left: -235px;
@@ -162,13 +162,14 @@ body {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 33%;
   display: block;
   margin-top: -185px;
   margin-left: -235px;
   padding: 25px;
   width: 420px;
   height: auto;
+  /*min-height: 480px;*/
   background: white;
   text-align: center;
 }
@@ -220,10 +221,16 @@ body {
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-  margin-top: 25px;
-  margin-bottom: 70px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  position: absolute;
+  top: 40%;
+  left: 33%;
+  display: block;
+  margin-top: -185px;
+  margin-left: -235px;
+  padding: 25px;
+  width: 420px;
+  height: auto;
+  /*min-height: 480px;*/
   background: white;
   text-align: center;
 }
@@ -274,7 +281,7 @@ body {
 
 /* line 171, ../sass/typica-login.scss */
 .register-info-wraper {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* line 174, ../sass/typica-login.scss */
@@ -326,13 +333,16 @@ footer.white {
 }
 
 /* line 24, D:/DropBox/bootstrap/typica-login/sass/includes/_fonts.scss */
-.login-form label, .app-form label{
+.login-form label, .app-form label, .app-form h3{
   font-family: 'Lato', Helvetica, sans-serif;
   font-size: 20px;
   color: #333333;
   font-weight: 300;
 }
 
+.app-form h3 {
+  font-weight: bold;
+}
 
 
 /* register form */
@@ -447,9 +457,24 @@ footer.navbar-fixed-bottom {
   }
 }
 
+#plan-form input, #plan-form textarea{
+  width: 90%;
 
+}
+
+.margintop20 {margin-top: 20px;}
+#firstregister { text-align: right;}
+
+#register-info p { 
+  color: white;
+  font-size: 1.4em;
+  line-height: 1.4em;
+ }
 
 /* TEMPORARY ADDITIONS */
 .navbar .brand { opacity: 0;}
 .navbar { display: none; }
 #login-wraper, #app-wraper { top: 40%; }
+
+.register-logo { float:left;}
+#register-form legend { width: 75%; }
