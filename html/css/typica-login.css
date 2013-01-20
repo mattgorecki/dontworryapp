@@ -9,7 +9,7 @@ html {
 
 /* line 13, ../sass/typica-login.scss */
 body {
-  background: url(../bg1.png) no-repeat center center fixed;
+  background: url(../dontworry-lowres50%.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -145,6 +145,68 @@ body {
   background-image: none;
 }
 
+
+
+/* ####### */
+/* $APP forms  */
+/* ####### */
+/* line 80, ../sass/typica-login.scss */
+#app-wraper {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  margin-top: -185px;
+  margin-left: -235px;
+  padding: 25px;
+  width: 420px;
+  height: auto;
+  background: white;
+  text-align: center;
+}
+
+/* line 97, ../sass/typica-login.scss */
+.app-form legend {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+}
+/* line 102, ../sass/typica-login.scss */
+.app-form .body {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eeeeee;
+}
+/* line 106, ../sass/typica-login.scss */
+.app-form .footer {
+  margin-top: 20px;
+}
+/* line 108, ../sass/typica-login.scss */
+.app-form .footer .checkbox.inline {
+  display: inline;
+}
+/* line 110, ../sass/typica-login.scss */
+.app-form .footer .checkbox.inline input[type="checkbox"] {
+  float: none;
+  margin-top: -4px;
+}
+/* line 115, ../sass/typica-login.scss */
+.app-form .footer .btn {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin-left: 15px;
+  padding: 7px 25px;
+  background-image: none;
+}
+
 /* ######### */
 /* $REGISTER */
 /* ######### */
@@ -255,7 +317,7 @@ footer.white {
 
 /* login form */
 /* line 17, D:/DropBox/bootstrap/typica-login/sass/includes/_fonts.scss */
-.login-form legend {
+.login-form legend, .app-form legend {
   font-family: 'Lato', Helvetica, sans-serif;
   font-size: 36px;
   font-weight: 300;
@@ -264,12 +326,14 @@ footer.white {
 }
 
 /* line 24, D:/DropBox/bootstrap/typica-login/sass/includes/_fonts.scss */
-.login-form label {
+.login-form label, .app-form label{
   font-family: 'Lato', Helvetica, sans-serif;
   font-size: 20px;
   color: #333333;
   font-weight: 300;
 }
+
+
 
 /* register form */
 /* line 32, D:/DropBox/bootstrap/typica-login/sass/includes/_fonts.scss */
@@ -382,3 +446,10 @@ footer.navbar-fixed-bottom {
     margin: 0 auto;
   }
 }
+
+
+
+/* TEMPORARY ADDITIONS */
+.navbar .brand { opacity: 0;}
+.navbar { display: none; }
+#login-wraper, #app-wraper { top: 40%; }
