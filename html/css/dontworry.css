@@ -394,10 +394,10 @@ footer.navbar-fixed-bottom {
 #register-info h1 {
   font-size: 35px;
   font-family: "PT Sans", Arial, Helvetica, sans-serif;
-  line-height: 55px;
+  line-height: 12px;
   font-weight: 400;
   text-align: right;
-  padding-bottom: 15px;
+  padding-bottom: 0px;
   color: white;
 
   font-family: 'Lato', Helvetica, sans-serif;
@@ -410,24 +410,32 @@ footer.navbar-fixed-bottom {
 }
 
 #register-info h2 {
-  font-size: 35px;
-  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  font-size: 23px;
+  /*font-family: "PT Sans", Arial, Helvetica, sans-serif;*/
+  font-family: 'Lato', Helvetica, sans-serif;
   line-height: 55px;
-  font-weight: 400;
+  font-weight: 300;
   text-align: right;
   padding-bottom: 15px;
-  color: white;
+  color: black;
 }
 
 #register-info p {
   /*font-size: 42px;*/
-  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  /*font-family: "PT Sans", Arial, Helvetica, sans-serif;*/
+  font-family: 'Lato', Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  color: #333333;
+  font-weight: 300;
+  text-align: left;
   /*line-height: 55px;*/
   /*font-weight: 400;*/
   /*text-align: right;*/
   /*padding-bottom: 50px;*/
-  color: white;
+  color: black;
 }
+
 
 
 /* ######## */
@@ -505,11 +513,11 @@ footer.navbar-fixed-bottom {
 .margintop20 {margin-top: 20px;}
 #firstregister { text-align: right;}
 
-#register-info p { 
-  color: white;
-  font-size: 1.4em;
-  line-height: 1.4em;
- }
+.snooze-btn {
+  margin-right: 10px;
+}
+
+.add-friend-field {margin-top: 10px;}
 
 /* TEMPORARY ADDITIONS */
 .navbar .brand { opacity: 0;}
