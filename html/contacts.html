@@ -41,7 +41,7 @@
 
     <div class="container">
 
-        <div id="app-wraper">
+        <div id="app-wraper" data-content="Select the people we should notify if you don't check back in.">
             <form class="form app-form">
                 <legend><span class="blue">Don't Worry</span></legend>
             
@@ -90,11 +90,19 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap-datetimepicker.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/backstretch.min.js"></script>
-    <script src="js/dontworry.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <!-- // <script src="js/backstretch.min.js"></script> -->
+    <!-- // <script src="js/dontworry.js"></script> -->
 
     <script type="text/javascript">
     $("#datepick").datetimepicker();
-    </script>   
+    </script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#app-wraper').popover('show');
+        });
+    </script>
+
   </body>
 </html>

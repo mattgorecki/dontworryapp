@@ -1,11 +1,22 @@
+jQuery.fn.exists = function(){return this.length>0;}
+
 jQuery(document).ready(function($) {
 
-	 // $.backstretch([
-      // "dontworry-lowres50%.jpg"
-  	// ], {duration: 3000, fade: 750});
+ // $.backstretch([
+    // "dontworry-lowres50%.jpg"
+	// ], {duration: 3000, fade: 750});
 
-    // auto increase text area for plans
+
+  if ($('#as').exists()) {
     $('#as').autosize();  
+  }
+
+  if ($('#app-wraper').exists()) {
+    $('#app-wraper').popover('show');
+    console.log('working');
+  }
+              
+  
 
 
 });

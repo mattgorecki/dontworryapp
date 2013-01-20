@@ -40,13 +40,13 @@
 
     <div class="container">
 
-        <div id="app-wraper">
+        <div id="app-wraper" data-content="Enter a description of what you are doing and where you are going." title="My plans are:">
             <form class="form login-form">
                 <legend><span class="blue">Don't Worry</span></legend>
             
                 <div class="body" id="plan-form">
                     <label>My plans are</label>
-                    <textarea rows="4" id="as"></textarea>
+                    <textarea rows="4" id="as" ></textarea>
                 </div>
             
                 <div class="footer">
@@ -66,9 +66,15 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery.autosize-min.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
     <script src="js/backstretch.min.js"></script>
     <script src="js/dontworry.js"></script>
 
-
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#app-wraper').popover('show');
+            // console.log('working');
+        });
+    </script>
   </body>
 </html>
