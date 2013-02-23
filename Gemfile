@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Heroku needs Ruby version 1.9.3 specified or uses 1.9.2
+ruby '1.9.3'
+
 gem 'rails', '3.2.12'
 
 # Bundle edge Rails instead:
