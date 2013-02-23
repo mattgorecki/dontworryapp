@@ -14,9 +14,9 @@
 /log/*.log
 /tmp
 
-
-# dontworry
-.env
-
+# Ben's environment
 dontworry.sublime-project
 dontworry.sublime-workspace
+
+# Don't Worry specific
+.env

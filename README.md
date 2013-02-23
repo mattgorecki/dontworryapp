@@ -5,33 +5,54 @@ This is where the repo description will go.
 
 ## Starting Development Server
 
+Foreman gem handles starting mongo, rails server, and worker process.
+
     bundle exec foreman start -f ProcfileDevelopment
 
+ctrl - c to quit
+
 ## Development Setup
+
+### Install Homebrew (Mac)
+[http://mxcl.github.com/homebrew/](http://mxcl.github.com/homebrew/)
 
 ### Install Mongodb (Mac w/ homebrew)
     brew install mongodb
     mongod   ## Starts Mongo. Command only needed to start Mongodb manually.
 
+### Ruby Basics
+First install compiler and RVM
+
+Mac: Download Xcode from app store.
+Open Xcode >> Preferences >> Downloads >>
+Install `Command Line Tools`
+
+Note: Ben has had bad luck with RailsInstaller for OS X. It does wierd things.
+
+Linux: You probably have a compiler installed. :)
+
+Visit [RVM website - https://rvm.io/](https://rvm.io/), and follow installation instructions.
+
+
+### Project Specific Ruby version and Gems
+    rvm install 1.9.3-p392
+
+cd out and back into dontworry rails folder &
+answer yes to .rvmrc question if asked
+
+    bundle install
+
 ### Genghis (optional...for Mongo debugging)
-[Genghis on Github](https://github.com/bobthecow/genghis)
+[https://github.com/bobthecow/genghis](https://github.com/bobthecow/genghis)
 
     gem install genghis    
     genghisapp
     genghisapp --kill
 
-### Foreman
-    gem install foreman
-    echo "RACK_ENV=development" >>.env
-
-### Ruby & Gems
-    rvm install 1.9.3-p392
-    # cd out and back into dontworry rails folder
-    # answer y to .rvmrc question if asked
-    bundle install
-
 ### Temp reference
     rails new dontworry --skip-active-record --skip-test-unit
+    gem install foreman
+    echo "RACK_ENV=development" >>.env
 
 
 ## Debugging Rails
