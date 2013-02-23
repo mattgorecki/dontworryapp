@@ -21,6 +21,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'foreman', :require => false
 end
 
 gem 'jquery-rails'
