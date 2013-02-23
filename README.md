@@ -5,7 +5,8 @@ This is where the repo description will go.
 
 ## Starting Development Server
 
-Foreman gem handles starting mongo, rails server, and worker process.
+Foreman gem handles starting mongo, rails server, and worker process. 
+Run the following command to start the development server:
 
     bundle exec foreman start -f ProcfileDevelopment
 
