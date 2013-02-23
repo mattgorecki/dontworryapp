@@ -12,7 +12,7 @@ Run the following command to start the development server:
 
 ctrl - c to quit
 
-## Development Setup
+## Development Environment Setup
 
 ### Install Homebrew (Mac)
 [http://mxcl.github.com/homebrew/](http://mxcl.github.com/homebrew/)
@@ -50,7 +50,14 @@ answer yes to .rvmrc question if asked
     genghisapp
     genghisapp --kill
 
+Other
+-----
+
+### Check for Common Security vulnerabilities
+    brakeman -o ./tmp/brakeman.html; launchy ./tmp/brakeman.html 
+
 ### Temp reference
     rails new dontworry --skip-active-record --skip-test-unit
     gem install foreman
     echo "RACK_ENV=development" >>.env
+

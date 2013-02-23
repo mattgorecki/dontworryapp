@@ -30,6 +30,7 @@ end
 group :development do
   # Opens sent emails in browser.
   gem "letter_opener"
+  gem "brakeman"
 end
 
 # All environments
