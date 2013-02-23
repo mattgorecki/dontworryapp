@@ -24,6 +24,11 @@ This is where the repo description will go.
     gem install foreman
     echo "RACK_ENV=development" >>.env
 
+### Ruby & Gems
+    rvm install 1.9.3-p392
+    # cd out and back into dontworry rails folder
+    # answer y to .rvmrc question if asked
+    bundle install
 
 ### Temp reference
     rails new dontworry --skip-active-record --skip-test-unit
