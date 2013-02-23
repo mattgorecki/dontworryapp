@@ -30,6 +30,7 @@ end
 # All environments
 gem 'jquery-rails'
 gem 'mongoid'
+gem 'devise'
 
 
 # To use ActiveModel has_secure_password
