@@ -14,5 +14,9 @@
 /log/*.log
 /tmp
 
+
+# dontworry
+.env
+
 dontworry.sublime-project
 dontworry.sublime-workspace
