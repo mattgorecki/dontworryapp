@@ -1,0 +1,2 @@
+mongodb: mongod
+web: bundle exec rails s

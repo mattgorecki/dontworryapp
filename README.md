@@ -5,7 +5,7 @@ This is where the repo description will go.
 
 ## Starting Development Server
 
-    foreman start
+    bundle exec foreman start -f ProcfileDevelopment
 
 ## Development Setup
 
