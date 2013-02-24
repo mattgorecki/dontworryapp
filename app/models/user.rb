@@ -3,8 +3,13 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+
+  # Disable registration on production server for now. Soften this a bit.
+  if Rails.env.development?
+    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  else
+    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
+  end
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
