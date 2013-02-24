@@ -5,7 +5,7 @@ class User
   # :lockable, :timeoutable and :omniauthable
 
   # Disable registration on production server for now. Soften this a bit.
-  if Rails.env.development?
+  if Rails.env.production?
     devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   else
     devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
