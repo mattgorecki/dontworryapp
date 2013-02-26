@@ -42,13 +42,17 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+  
+  
+  # List of admin users
+  def self.dev_ids
+    ['ben@benjaminolson.net','dontworryapp@gmail.com','forrestc@imach.com',
+      'gorecki.matt@gmail.com','seanmcoan@gmail.com','jt.joel@gmail.com']
+  end
 
+  # Return true if the user is an admin
   def admin?
-    if Rails.env.production?
-      false
-    else
-      true
-    end
+    self.class.dev_ids.include?(current_user.email)
   end
 
 end
