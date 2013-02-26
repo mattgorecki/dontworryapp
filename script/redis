@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# trap TERM and change to QUIT
+trap 'echo killing $PID; kill -TERM $PID' SIGTERM SIGHUP
+
+# program to run
+redis-server config/redis.conf &
+
+# capture PID and wait
+PID=$!
+wait

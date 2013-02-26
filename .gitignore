@@ -17,6 +17,9 @@
 # Ben's environment
 dontworry.sublime-project
 dontworry.sublime-workspace
+.rake_tasks~
+.DS_store
 
 # Don't Worry specific
 .env
+db/redis.rdb

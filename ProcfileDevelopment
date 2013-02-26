@@ -1,2 +1,3 @@
+redis: ./script/redis > /dev/null
 mongodb: mongod
 web: bundle exec rails s

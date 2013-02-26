@@ -40,6 +40,7 @@ end
 gem 'jquery-rails'
 gem 'mongoid'
 gem 'devise'
+gem 'sidekiq'
 
 
 # To use ActiveModel has_secure_password
