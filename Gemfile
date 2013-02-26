@@ -11,6 +11,7 @@ gem 'rails', '3.2.12'
 group :production do
   # Use unicorn as the app server
   gem 'unicorn'
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required

@@ -107,6 +107,7 @@ GEM
     moped (1.4.2)
     multi_json (1.5.1)
     mustache (0.99.4)
+    newrelic_rpm (3.5.7.59)
     origin (1.0.11)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -227,6 +228,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   mongoid
+  newrelic_rpm
   rails (= 3.2.12)
   rspec-rails
   sass-rails (~> 3.2.3)
