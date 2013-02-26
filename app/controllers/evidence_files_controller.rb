@@ -1,0 +1,2 @@
+class EvidenceFilesController < ApplicationController
+end

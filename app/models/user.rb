@@ -40,6 +40,8 @@ class User
 
   before_validation :beta_invited?
 
+  has_many :evidence_files
+
   def beta_invited?
     unless self.class.dev_ids.include?(email)
     # unless BetaInvite.exists?(:email=>email)
