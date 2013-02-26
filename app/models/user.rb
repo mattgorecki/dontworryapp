@@ -4,12 +4,7 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
 
-  # Disable registration on production server for now. Soften this a bit.
-  if Rails.env.production?
-    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
-  else
-    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
-  end
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :registerable 
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
