@@ -42,4 +42,13 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  def admin?
+    if Rails.env.production?
+      false
+    else
+      true
+    end
+  end
+
 end

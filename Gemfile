@@ -40,7 +40,11 @@ end
 gem 'jquery-rails'
 gem 'mongoid'
 gem 'devise'
+
 gem 'sidekiq'
+gem 'slim'
+# if you require 'sinatra' you get the DSL extended to Object
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 
 # To use ActiveModel has_secure_password
