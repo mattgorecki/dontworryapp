@@ -12,6 +12,25 @@ Run the following command to start the development server:
 
 ctrl - c to quit
 
+## Database and Job Queue Tools
+
+### Mongo
+Local: [http://localhost:28017/](http://localhost:28017/)
+
+Genghis app: [http://localhost:5678/](http://localhost:5678/) - local only
+
+    # start
+    genghisapp
+    # stop
+    genghisapp --kill
+
+### Sidekiq & Redis
+Local:
+[http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) - admin required
+
+Heroku:
+[http://dontworry.herokuapp.com/sidekiq/](http://dontworry.herokuapp.com/sidekiq/)- admin required
+
 ## Development Environment Setup
 
 ### Install Homebrew (Mac)

@@ -34,6 +34,8 @@ group :development do
   # Opens sent emails in browser.
   gem "letter_opener"
   gem "brakeman"
+  gem "genghisapp", :require => false
+  gem "bson_ext", :require => false
 end
 
 # All environments
