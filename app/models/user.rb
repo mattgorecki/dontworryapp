@@ -42,7 +42,15 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-  
+
+  before_validation :beta_invited?
+
+  def beta_invited?
+    unless self.class.dev_ids.include?(email)
+    # unless BetaInvite.exists?(:email=>email)
+      errors.add :email, "is not on our beta list"  
+    end
+  end 
   
   # List of admin users
   def self.dev_ids
