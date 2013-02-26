@@ -52,7 +52,7 @@ class User
 
   # Return true if the user is an admin
   def admin?
-    self.class.dev_ids.include?(current_user.email)
+    self.class.dev_ids.include?(email)
   end
 
 end

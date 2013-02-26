@@ -6,11 +6,8 @@ Dontworry::Application.routes.draw do
   root :to => "static_pages#home"
 
   require 'sidekiq/web'
-  #require admin
-  # constraint = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin? }
-  #require valid user
-  constraint = lambda { |request| request.env['warden'].authenticate!({ scope: :user }) }
-  constraints constraint do
+  require_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin? }
+  constraints require_admin do
     mount Sidekiq::Web => '/sidekiq'
   end 
 
