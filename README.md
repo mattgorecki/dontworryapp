@@ -10,6 +10,8 @@ Run the following command to start the development server:
 
     bundle exec foreman start -f ProcfileDevelopment
 
+Visit [http://localhost:3000](http://localhost:3000)
+
 ctrl - c to quit
 
 ## Database and Job Queue Tools
@@ -68,6 +70,9 @@ answer yes to .rvmrc question if asked
     gem install genghis    
     genghisapp
     genghisapp --kill
+
+### Lost?
+Solid tutorial is available at [http://railsapps.github.com/installing-rails.html](http://railsapps.github.com/installing-rails.html)
 
 Other
 -----
