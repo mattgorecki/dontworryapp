@@ -14,11 +14,12 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-top: 40px;
 }
 @media (min-width: 979px) {
   /* line 13, ../sass/typica-login.scss */
   body {
-    padding-top: 80px;
+    padding-top: 40px;
   }
 }
 
@@ -212,7 +213,31 @@ body {
 /* $REGISTER */
 /* ######### */
 /* line 127, ../sass/typica-login.scss */
-#register-wraper {
+#register-wrapper {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  /*position: absolute;*/
+  /*top: 40%;*/
+  /*left: 27%;*/
+  display: block;
+  /*margin-top: -185px;*/
+  /*margin-left: -235px;*/
+  padding: 25px;
+  /*width: 540px;*/
+  height: auto;
+  /*min-height: 480px;*/
+  background: white;
+  text-align: center;
+}
+
+
+#register-wraper-orig {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
@@ -223,18 +248,17 @@ body {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 40%;
-  left: 33%;
+  left: 27%;
   display: block;
   margin-top: -185px;
   margin-left: -235px;
   padding: 25px;
-  width: 420px;
+  width: 540px;
   height: auto;
   /*min-height: 480px;*/
   background: white;
   text-align: center;
 }
-
 /* line 137, ../sass/typica-login.scss */
 #register-form {
   margin: 0 auto;

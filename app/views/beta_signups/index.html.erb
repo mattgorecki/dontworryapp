@@ -1,0 +1,32 @@
+<% content_for(:head) do %>
+  <style>
+    .beta-signup-button {
+      margin-bottom: 10px;
+    }
+  </style>
+<% end %>
+
+
+
+          <p><strong><em>Don’t Worry</em></strong> is a service designed to give you <strong>Peace of Mind.</strong></p>
+          <br>
+
+          <p><strong>Hitting the Backcountry? Hitting the Road?</strong></p>
+          <p>Let <em>Don’t Worry</em> know where you’re going - when you think you'll be back - and who to tell (just in case)... </p>
+          <br>
+
+          <p><strong>Don’t Get Lost Without Us.</strong></p>
+          <p>We are hard at work on <em>Don’t Worry</em> - sign up below and be the First In Line.</p>
+          <br>
+
+          <%= form_for @beta_user do |f| %>
+            <%# f.label :email %>
+            <label for="beta_signup_email">Enter email to recieve beta invitation.</label>
+            <%= f.text_field :email, class: "input-huge"%>
+            <%= f.submit value: "Go", class: "btn btn-success beta-signup-button" %>
+          <% end %>
+
+  
+
+
+

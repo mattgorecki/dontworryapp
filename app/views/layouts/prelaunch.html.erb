@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dontworry</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="span6" id="register-wrapper">
+        <div id="register-info">
+          <h1>Don't Worry</h1>
+          <h2>Let them know you're okay.</h2>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/backstretch.min.js"></script>
+    <script src="js/dontworry.js"></script>
+</body>
+</html>

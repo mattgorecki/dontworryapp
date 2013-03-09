@@ -3,7 +3,14 @@ Dontworry::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "static_pages#home"
+  root :to => "beta_signups#index"
+
+  resources :beta_signups do
+    collection do
+      get :success
+    end
+  end
+    
 
   require 'sidekiq/web'
   require_admin = lambda { |request| request.env["warden"].authenticate? and request.env['warden'].user.admin? }
