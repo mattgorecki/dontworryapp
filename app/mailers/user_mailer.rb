@@ -9,6 +9,6 @@ class UserMailer < ActionMailer::Base
   def beta_signup_confirmation(user)
     @user = user
 
-    mail to: @user.email
+    mail to: @user.email, subject: "Thanks from Don't Worry!"
   end
 end
