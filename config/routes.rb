@@ -1,5 +1,8 @@
 Dontworry::Application.routes.draw do
 
+  # temp since Ben told everyone the wrong address
+  match "/beta_signups" => redirect("/beta_signup")
+  match "/beta_signups/success" => redirect("/beta_signup/success")
 
   devise_for :users
 
