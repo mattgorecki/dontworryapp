@@ -22,7 +22,7 @@
           <%= form_for @beta_user, url: beta_signup_index_path(@beta_user) do |f| %>
             <%# f.label :email %>
             <label for="beta_signup_email">Enter email to recieve beta invitation.</label>
-            <%= f.text_field :email, class: "input-huge"%>
+            <%= f.text_field :email, class: "input-huge" %>
             <%= f.submit value: "Go", class: "btn btn-success beta-signup-button" %>
           <% end %>
 

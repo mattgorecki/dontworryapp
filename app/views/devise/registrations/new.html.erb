@@ -4,13 +4,13 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.email_field :email, :autofocus => true, class: "input-huge"  %></div>
 
   <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, class: "input-huge"  %></div>
 
   <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, class: "input-huge"  %></div>
 
   <div><%= f.submit "Sign up", class: "btn btn-success" %></div>
 <% end %>
