@@ -3,9 +3,9 @@ Dontworry::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "beta_signups#index"
+  root :to => "static_pages#home"
 
-  resources :beta_signups do
+  resources :beta_signup, controller: "beta_signups" do
     collection do
       get :success
     end

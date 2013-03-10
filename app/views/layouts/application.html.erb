@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dontworry</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
 </head>
 <body>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "alert alert-#{key} span12") %>
-  <% end %>
-<%= yield %>
-
+  <div class="container">
+    <div class="row">
+      <div class="span5" id="app-wrapper">
+        <div id="app-title">
+          <h1>Don't Worry</h1>
+          <h2><%= sub_title(yield(:title)) %></h2>
+          <hr>
+        </div>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 <%= render 'layouts/google_analytics' %>
 </body>
 </html>

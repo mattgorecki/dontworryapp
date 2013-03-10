@@ -1,0 +1,86 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|Lato:100,300,400);
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: black;
+  background: url('dontworry-lowres.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 40px;
+}
+
+h1 {
+  font-family: "PT Sans", Arial, Helvetica, sans-serif;
+}
+h2, h3, p {
+  font-family: 'Lato', Helvetica, sans-serif;
+}
+
+#app-wrapper {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  display: block;
+  padding: 25px 25px 50px 25px;
+  background: white;
+  text-align: center;
+
+  h3 {
+    font-size: 20px;
+    color: #333333;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+    font-weight: 300;
+    text-align: left;
+    color: black;
+  }
+
+  .btn {
+    padding: 10px 40px;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+#app-title {
+  h1 {
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 400;
+    text-align: right;
+    padding-bottom: 0px;
+    color: white;
+    font-family: 'Lato', Helvetica, sans-serif;
+    font-weight: 300;
+    color: #447fc8;
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+
+  h2 {
+    font-size: 23px;
+    /*font-family: "PT Sans", Arial, Helvetica, sans-serif;*/
+    line-height: 23px;
+    font-weight: 300;
+    text-align: right;
+    color: black;
+  }
+}
+
+
+
+
