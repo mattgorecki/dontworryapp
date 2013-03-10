@@ -1,7 +1,7 @@
 class BetaSignup
   include Mongoid::Document
   field :email, type: String
-  field :invited, type: Boolean
+  field :invited, type: Boolean, default: false
 
   validates_uniqueness_of :email , :message => "already exists"  
   validates :email,   
