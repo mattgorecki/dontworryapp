@@ -10,4 +10,5 @@ preload_app true
 
 # Immediately restart any workers that
 # haven't responded within 30 seconds
+# Heroku times out requests at 30 seconds. Don't go bigger.
 timeout 30
