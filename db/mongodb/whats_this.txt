@@ -1,0 +1,1 @@
+This folder is where the mongodb database is stored. Git should ignore it.

@@ -23,3 +23,5 @@ dontworry.sublime-workspace
 # Don't Worry specific
 .env
 db/redis.rdb
+db/mongodb/journal
+db/mongodb/mongod.lock
