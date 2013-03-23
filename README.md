@@ -46,7 +46,7 @@ Heroku:
 [http://dontworry.herokuapp.com/sidekiq/](http://dontworry.herokuapp.com/sidekiq/)- admin required
 
 # Development Environment Setup
-## Max OS X specific
+## Mac OS X specific
 Note: Ben has had bad luck with RailsInstaller for OS X. It does wierd things. We
 will be doing this step by step.
 ### Install Xcode & compiling tools
