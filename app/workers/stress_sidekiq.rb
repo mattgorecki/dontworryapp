@@ -1,6 +1,6 @@
 # For load testing Sidekiq/Redis.
 # Run from rails console and watch for things like WARN: ERR max number of clients reached
-# 50000.times { CheckStatusWorker.perform_async([rand(123098)]*20)}
+# 50000.times { StressSidekiq.perform_async([rand(123098)]*20)}
 
 class StressSidekiq
   include Sidekiq::Worker

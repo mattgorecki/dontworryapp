@@ -10,9 +10,21 @@ Run the following command to start the development server:
 
     bundle exec foreman start -f ProcfileDevelopment
 
+If you already have Redis and Mongo running (you're prob on Linux)
+    
+    bundle exec foreman start -f ProcfileDevelopmentNoDB
+
 Visit [http://localhost:3000](http://localhost:3000)
 
 ctrl - c to quit
+
+## Production
+During the development stage, sidekiq is turned off to avoid unecessary billing.
+Run with:
+
+    heroku run bundle exec sidekiq -e production -C config/sidekiq.yml
+
+ctrl + c when you are done to kill remote worker threads
 
 ## Database and Job Queue Tools
 
@@ -33,7 +45,7 @@ Local:
 Heroku:
 [http://dontworry.herokuapp.com/sidekiq/](http://dontworry.herokuapp.com/sidekiq/)- admin required
 
-# Development Evnironment Setup
+# Development Environment Setup
 ## Max OS X specific
 Note: Ben has had bad luck with RailsInstaller for OS X. It does wierd things. We
 will be doing this step by step.
@@ -75,7 +87,8 @@ Ruby Dependencies - we will be compiling Ruby ourselves with RVM below
 
     sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
 
-### Install Nodejs
+node.js
+
     sudo apt-get install nodejs
 
 ### Install Project Dependencies
