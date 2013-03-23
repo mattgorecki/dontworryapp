@@ -1,4 +1,4 @@
 redis: ./script/redis > /dev/null
 mongodb: mongod --dbpath db/mongodb/
 web: bundle exec rails s
-sidekiq: bundle exec sidekiq
+sidekiq: bundle exec sidekiq -e development -C config/sidekiq.yml
