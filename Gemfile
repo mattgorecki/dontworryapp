@@ -28,13 +28,12 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'foreman', :require => false
 end
 
 group :development do
   # Opens sent emails in browser.
   gem "letter_opener"
-  gem 'puma'
+  gem 'foreman', :require => false
   # gem "brakeman"
   # gem "genghisapp", :require => false
   # gem "bson_ext", :require => false
@@ -44,6 +43,7 @@ end
 gem 'jquery-rails'
 gem 'mongoid'
 gem 'devise'
+gem 'puma'
 
 gem 'sidekiq'
 gem 'slim'
