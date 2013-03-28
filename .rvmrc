@@ -1,1 +1,1 @@
-rvm use ruby-1.9.3-p392@dontworry --create
+rvm use jruby-1.7.2@dontworry --create

@@ -147,3 +147,7 @@ Other
     gem install foreman
     echo "RACK_ENV=development" >>.env
 
+Use c extensions with jruby
+
+    export JRUBY_OPTS="-Xcext.enabled=true"
+
