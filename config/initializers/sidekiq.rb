@@ -13,11 +13,11 @@ require 'sidekiq'
 ## Also change config/sidekiq.yml
 
 Sidekiq.configure_client do |config|
-  config.redis = { :size => 1 }
-  if Rails.env.production?
-    config.redis[:url] = ENV["REDISCLOUD_URL"]
-    config.redis[:namespace] = 'dontworry'
-  end
+  config.redis = { :size => 1, :url => ENV["REDISCLOUD_URL"], :namespace => 'dontworry' }
+  # if Rails.env.production?
+  #   config.redis[:url] = ENV["REDISCLOUD_URL"]
+  #   config.redis[:namespace] = 'dontworry'
+  # end
 end
 
 Sidekiq.configure_server do |config|
@@ -25,9 +25,9 @@ Sidekiq.configure_server do |config|
   # concurrency value so you do not need to 
   # specify this. For this demo I do 
   # show it to understand the numbers
-  config.redis = { :size => 7 }
-  if Rails.env.production?
-    config.redis[:url] = ENV["REDISCLOUD_URL"]
-    config.redis[:namespace] = 'dontworry'
-  end
+  config.redis = { :size => 7, :url => ENV["REDISCLOUD_URL"], :namespace => 'dontworry' }
+  # if Rails.env.production?
+  #   config.redis[:url] = ENV["REDISCLOUD_URL"]
+  #   config.redis[:namespace] = 'dontworry'
+  # end
 end
