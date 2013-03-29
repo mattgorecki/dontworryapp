@@ -21,7 +21,12 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  # therubyrhino is a jruby replacement for therubyracer
+  gem 'therubyrhino'
+
+  # gem 'uglifier', '>= 1.0.3'
+  # using closure-compiler as recommended by jruby buildpack for faster compress times
+  gem 'closure-compiler'
 end
 
 group :development, :test do
