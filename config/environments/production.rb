@@ -82,9 +82,9 @@ Dontworry::Application.configure do
   config.assets.js_compressor = :closure
 
   # Added at recommendation of jruby buildpack
-  STDOUT.sync = true
-  logger = Logger.new(STDOUT)
-  logger.level = Logger::INFO
-  config.logger = logger
+  # STDOUT.sync = true
+  # logger = Logger.new(STDOUT)
+  # logger.level = Logger::INFO
+  # config.logger = logger
 
 end
