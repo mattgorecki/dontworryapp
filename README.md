@@ -173,3 +173,4 @@ Use the buildpack commit that matches our version of jruby
 
     heroku config:add BUILDPACK_URL="https://github.com/jruby/heroku-buildpack-jruby.git#c02394ec"
     
+    
