@@ -24,6 +24,10 @@ Run with:
 
     heroku run bundle exec sidekiq -e production -C config/sidekiq.yml
 
+Jruby
+
+    heroku run bin/sidekiq -e production -C config/sidekiq.yml
+
 ctrl + c when you are done to kill remote worker threads
 
 ## Database and Job Queue Tools
@@ -151,3 +155,13 @@ Use c extensions with jruby
 
     export JRUBY_OPTS="-Xcext.enabled=true"
 
+Flush redis in production
+
+    $redis.flushall
+
+
+TODO
+----
+
+Figure out if kickstand is needed between sidekiq and mongoid to disconnect workers
+https://github.com/mongoid/kiqstand
