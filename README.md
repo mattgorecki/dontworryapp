@@ -165,3 +165,8 @@ TODO
 
 Figure out if kickstand is needed between sidekiq and mongoid to disconnect workers
 https://github.com/mongoid/kiqstand
+
+
+Heroku Config
+-------------
+heroku config:add BUILDPACK_URL="https://github.com/jruby/heroku-buildpack-jruby.git#c02394ec"
