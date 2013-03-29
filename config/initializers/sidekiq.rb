@@ -14,6 +14,10 @@ require 'sidekiq'
 
 Sidekiq.configure_client do |config|
   config.redis = { :size => 1 }
+  if Rails.env.production?
+    config.redis[:url] = ENV["REDISCLOUD_URL"]
+    config.redis[:namespace] = 'dontworry'
+  end
 end
 
 Sidekiq.configure_server do |config|
@@ -22,4 +26,8 @@ Sidekiq.configure_server do |config|
   # specify this. For this demo I do 
   # show it to understand the numbers
   config.redis = { :size => 7 }
+  if Rails.env.production?
+    config.redis[:url] = ENV["REDISCLOUD_URL"]
+    config.redis[:namespace] = 'dontworry'
+  end
 end
