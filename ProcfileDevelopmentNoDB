@@ -1,2 +1,2 @@
-web: bundle exec rails s puma
+web: bundle exec puma -p 3000 -e development -C config/puma.rb
 sidekiq: bundle exec sidekiq -e development -C config/sidekiq.yml
