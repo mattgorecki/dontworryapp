@@ -3,34 +3,36 @@ Don't Worry App
 
 This is where the repo description will go.
 
-## Starting Development Server
+********************************************************************************
 
-Foreman gem handles starting mongo, rails server, and worker process. 
-Run the following command to start the development server:
+Starting Development Server
+===========================
 
-    bundle exec foreman start -f ProcfileDevelopment
+Foreman gem handles starting mongo, rails server, and worker process. Right now
+it still spits some errors on JRuby, so it is stated from MRI's foreman.
 
-If you already have Redis and Mongo running (you're prob on Linux)
+Start the development server and all dependencies. (prob Mac)
+
+    mri_foreman start -f ProcfileDevelopment
+
+Start the dev server without Redis and MongoDB because
+you already have it running. (prob Linux)
     
-    bundle exec foreman start -f ProcfileDevelopmentNoDB
+    mri_foreman start -f ProcfileDevelopmentNoDB
+
+or manually if the databases are already running
+
+    bundle exec puma -p 3000 -e development -C config/puma.rb
+    bundle exec sidekiq -e development -C config/sidekiq.yml
 
 Visit [http://localhost:3000](http://localhost:3000)
 
 ctrl - c to quit
 
-## Production
-During the development stage, sidekiq is turned off to avoid unecessary billing.
-Run with:
-
-    heroku run bundle exec sidekiq -e production -C config/sidekiq.yml
-
-Jruby
-
-    heroku run bin/sidekiq -e production -C config/sidekiq.yml
-
-ctrl + c when you are done to kill remote worker threads
-
-## Database and Job Queue Tools
+## Development Monitoring
+### Sidekiq & Redis
+Local:
+[http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) - admin required
 
 ### Mongo
 Local: [http://localhost:28017/](http://localhost:28017/)
@@ -42,14 +44,46 @@ Genghis app: [http://localhost:5678/](http://localhost:5678/) - local only
     # stop
     genghisapp --kill
 
-### Sidekiq & Redis
-Local:
-[http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) - admin required
+********************************************************************************
 
+Production
+==========
+
+During the development stage, sidekiq is turned off to avoid unecessary billing.
+Run with:
+
+    heroku run bin/sidekiq -e production -C config/sidekiq.yml --app dontworry
+
+ctrl + c when you are done to kill remote worker threads and stop the $$$
+
+Run `heroku ps` to see what processes are left running.
+
+### Sidekiq & Redis Monitoring
 Heroku:
 [http://dontworry.herokuapp.com/sidekiq/](http://dontworry.herokuapp.com/sidekiq/)- admin required
 
-# Development Environment Setup
+********************************************************************************
+
+Staging
+=======
+
+During the development stage, sidekiq is turned off to avoid unecessary billing.
+Run with:
+
+    heroku run bin/sidekiq -e production -C config/sidekiq.yml --app dw-staging
+
+ctrl + c when you are done to kill remote worker threads and stop the $$$
+
+Run `heroku ps` to see what processes are left running.
+
+### Sidekiq & Redis Monitoring
+Heroku:
+[http://dw-staging.herokuapp.com/sidekiq/](http://dw-staging.herokuapp.com/sidekiq/)- admin required
+
+********************************************************************************
+
+Development Environment Setup
+=============================
 ## Mac OS X specific
 Note: Ben has had bad luck with RailsInstaller for OS X. It does wierd things. We
 will be doing this step by step.
@@ -108,8 +142,9 @@ RVM
     rvm list #if it doesnt work, restart terminal session
 
 ## Both Mac & Linux
-### Install project specific Ruby version
+### Install project specific Ruby versions
     rvm install 1.9.3-p392
+    rvm install jruby-1.7.2
 
 ### Check that project RVM settings work
 cd out and back into dontworry rails folder &
@@ -130,6 +165,19 @@ Not working on Mac? maybe ?? add the following to ~/.bash_profile
     gem install bundler
     bundle install
 
+### Install Foreman (optional...for easier development startup)
+    
+Foreman uses forks, which JRuby doesn't like so much. We will run with MRI.
+
+    rvm use rvm use ruby-1.9.3-p392@dontworry
+    gem install foreman
+
+These are shortcuts to run gems from outside their typical place.
+
+    rvm wrapper ruby-1.9.3-p392@dontworry mri foreman
+    rvm wrapper jruby-1.7.2@dontworry jruby sidekiq
+    rvm wrapper jruby-1.7.2@dontworry jruby puma
+
 ### Genghis (optional...for Mongo debugging)
 [https://github.com/bobthecow/genghis](https://github.com/bobthecow/genghis)
 
@@ -139,6 +187,8 @@ Not working on Mac? maybe ?? add the following to ~/.bash_profile
 
 ### Lost?
 Solid tutorial is available at [http://railsapps.github.com/installing-rails.html](http://railsapps.github.com/installing-rails.html)
+
+********************************************************************************
 
 Other
 -----
@@ -167,10 +217,21 @@ Figure out if kickstand is needed between sidekiq and mongoid to disconnect work
 https://github.com/mongoid/kiqstand
 
 
-Heroku Config
--------------
-Use the buildpack commit that matches our version of jruby
+Create a new Heroku App from this repo
+--------------------------------------
+Use the JRuby buildpack commit that matches our version of jruby
 
+    heroku create --remote [NAMETHIS] --buildpack https://github.com/jruby/heroku-buildpack-jruby.git#c02394ec
+
+or for already started
+    
     heroku config:add BUILDPACK_URL="https://github.com/jruby/heroku-buildpack-jruby.git#c02394ec"
-    
-    
+
+Email config
+
+    heroku config:add GMAIL_USERNAME='FILL THIS IN'
+    heroku config:add GMAIL_PASSWORD='FILL THIS IN'
+
+Add config for Redis and MongoDB service providers
+
+Push code
