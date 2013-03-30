@@ -31,4 +31,7 @@ Dontworry::Application.configure do
 
   # Sending email: letter_opener opens in browser
   config.action_mailer.delivery_method = :letter_opener
+
+  # Enable threaded mode
+  config.threadsafe!
 end
