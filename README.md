@@ -130,7 +130,7 @@ node.js
     sudo apt-get install nodejs
 
 ### Install Project Dependencies
-    sudo apt-get install redis-server mongodb-server
+    sudo apt-get install redis-server mongodb-server openjdk-6-jre-headless
     
 
 ### Install RVM & Ruby
