@@ -25,3 +25,4 @@ dontworry.sublime-workspace
 db/redis.rdb
 db/mongodb/journal
 db/mongodb/mongod.lock
+db/mongodb
