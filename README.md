@@ -178,6 +178,10 @@ These are shortcuts to run gems from outside their typical place.
     rvm wrapper jruby-1.7.2@dontworry jruby sidekiq
     rvm wrapper jruby-1.7.2@dontworry jruby puma
 
+If you need to delete a wrapper.
+
+    rm -i $(which jruby_sidekiq)  ## or whatever the wrapper's name is
+
 ### Genghis (optional...for Mongo debugging)
 [https://github.com/bobthecow/genghis](https://github.com/bobthecow/genghis)
 
