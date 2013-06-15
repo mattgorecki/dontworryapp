@@ -25,7 +25,7 @@ class NationalParkTrip < WildernessTrip
 end
 
 #####################################
-class DocumentationEvent
+class Event
   include Mongoid::Document
   
   field :timestamp, type: Time, default: ->{ Time.now.utc }
@@ -36,11 +36,11 @@ class DocumentationEvent
   embedded_in :adventure
 end
 
-class EventCheckIn < DocumentationEvent
+class EventCheckIn < Event
   field :radius, type: Float
 end
 
-class EventCreate < DocumentationEvent
+class EventCreate < Event
   field :width, type: Float
   field :height, type: Float
 end
