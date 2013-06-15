@@ -31,6 +31,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'mongoid-rspec'
 end
 
 group :development do
