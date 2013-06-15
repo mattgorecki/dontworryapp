@@ -12,34 +12,21 @@ require 'sidekiq'
 ##
 ## Also change config/sidekiq.yml
 
-Sidekiq.configure_client do |config|
-  if Rails.env.production?
-    config.redis = { :size => 1, :url => ENV["REDISCLOUD_URL"], :namespace => 'dontworry' }
-  end
+if Rails.env.production? 
+  redis_url = ENV["REDISCLOUD_URL"]
+else
+  rails_env = ENV['RAILS_ENV'] || 'development'
+  redis_url = YAML.load_file(File.join(File.dirname(__FILE__), '..', '..', 'config', 'redis.yml'))[rails_env]
+  redis_url = "redis://#{redis_url}"
+end
 
-  if Rails.env.development?
-    config.redis = { size: 1 , namespace: 'dontworry' }
-  end
-  # if Rails.env.production?
-  #   config.redis[:url] = ENV["REDISCLOUD_URL"]
-  #   config.redis[:namespace] = 'dontworry'
-  # end
+Sidekiq.configure_client do |config|
+  config.redis = { :size => 1, :url => redis_url, :namespace => 'dontworry' }
 end
 
 Sidekiq.configure_server do |config|
   # The config.redis is calculated by the 
   # concurrency value so you do not need to 
-  # specify this. For this demo I do 
-  # show it to understand the numbers
-  if Rails.env.production?
-    config.redis = { :size => 6, :url => ENV["REDISCLOUD_URL"], :namespace => 'dontworry' }
-  end
-
-  if Rails.env.development?
-    #
-  end
-  # if Rails.env.production?
-  #   config.redis[:url] = ENV["REDISCLOUD_URL"]
-  #   config.redis[:namespace] = 'dontworry'
-  # end
+  # specify this.
+  config.redis = { :size => 6, :url => redis_url, :namespace => 'dontworry' }
 end
