@@ -87,4 +87,8 @@ Dontworry::Application.configure do
   logger.level = Logger::INFO
   config.logger = logger
 
+  # MongoDB log levels
+  # Mongoid.logger.level = Logger::DEBUG
+  # Moped.logger.level = Logger::DEBUG
+
 end
