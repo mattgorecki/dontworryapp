@@ -3,7 +3,7 @@
 
 class CheckStatusWorker
   include Sidekiq::Worker
-  
+
   def perform(adventure_id)
     # Let the other workers know we are working on this.
     @locking_key = "adventure_wip_#{adventure_id}"
@@ -12,8 +12,8 @@ class CheckStatusWorker
       # Fetch evidence
       @adventure = Adventure.where(id: adventure_id).first
 
-      check_adventure_state
-      determine_next_action
+      determine_adventure_state
+      take_action_based_on_state
 
       remove_lock
     else
@@ -37,14 +37,14 @@ class CheckStatusWorker
     Sidekiq.redis { |redis| redis.del(@locking_key) }
   end
 
-  def check_adventure_state
+  def determine_adventure_state
     @adventure.events.each do |event|
       puts event.inspect
     end
     @adventure_state = 'not implented'
   end
 
-  def determine_next_action
+  def take_action_based_on_state
     if @adventure_state == 'not implented'
       puts 'nothing to see here'
     end
