@@ -1,6 +1,6 @@
 class CheckStatusWorker
   include Sidekiq::Worker
-  def perform(evidence_id)
+  def perform(adventure_id)
     # Fetch evidence
 
     # Check state

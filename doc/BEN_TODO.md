@@ -1,3 +1,9 @@
+Check on mongo db config if you start using eager loading...aka prefetching
+an associated record. May not happen much with embedded documents.
+mongoid.yml
+  # identity_map_enabled: false
+
+
 adventure
     embeds_many :events
     event
