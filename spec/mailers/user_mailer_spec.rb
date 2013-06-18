@@ -17,7 +17,7 @@ describe UserMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Thank you for signing up for Don't Worry!\r\n\r\nWe are hard at work on the Don't Worry app and we will be sending you emails about our progress.\r\n\r\nYou can really help us out by sharing with your friends. http://www.dontworryapp.com\r\n\r\nThank you,\r\nThe Don't Worry Team")
+      mail.body.encoded.should match("Thank you for signing up for Don't Worry!")
     end
   end
 
