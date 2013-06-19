@@ -3,30 +3,35 @@ Don't Worry App
 
 This is where the repo description will go.
 
-## Starting Development Server
+********************************************************************************
 
-Foreman gem handles starting mongo, rails server, and worker process. 
-Run the following command to start the development server:
+Starting Development Server
+===========================
+
+Foreman gem handles starting mongo, rails server, and worker process.
+
+Start the development server and all dependencies. (prob Mac)
 
     bundle exec foreman start -f ProcfileDevelopment
 
-If you already have Redis and Mongo running (you're prob on Linux)
+Start the dev server without Redis and MongoDB because
+you already have it running. (prob Linux)
     
-    bundle exec foreman start -f ProcfileDevelopmentNoDB
+    foreman start -f ProcfileDevelopmentNoDB
+
+or manually if the databases are already running
+
+    rails s
+    bundle exec sidekiq -e development -C config/sidekiq.yml
 
 Visit [http://localhost:3000](http://localhost:3000)
 
 ctrl - c to quit
 
-## Production
-During the development stage, sidekiq is turned off to avoid unecessary billing.
-Run with:
-
-    heroku run bundle exec sidekiq -e production -C config/sidekiq.yml
-
-ctrl + c when you are done to kill remote worker threads
-
-## Database and Job Queue Tools
+## Development Monitoring
+### Sidekiq & Redis
+Local:
+[http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) - admin required
 
 ### Mongo
 Local: [http://localhost:28017/](http://localhost:28017/)
@@ -38,14 +43,46 @@ Genghis app: [http://localhost:5678/](http://localhost:5678/) - local only
     # stop
     genghisapp --kill
 
-### Sidekiq & Redis
-Local:
-[http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) - admin required
+********************************************************************************
 
+Production
+==========
+
+During the development stage, sidekiq is turned off to avoid unecessary billing.
+Run with:
+
+    heroku run bin/sidekiq -e production -C config/sidekiq.yml --app dontworry
+
+ctrl + c when you are done to kill remote worker threads and stop the $$$
+
+Run `heroku ps` to see what processes are left running.
+
+### Sidekiq & Redis Monitoring
 Heroku:
 [http://dontworry.herokuapp.com/sidekiq/](http://dontworry.herokuapp.com/sidekiq/)- admin required
 
-# Development Environment Setup
+********************************************************************************
+
+Staging
+=======
+
+During the development stage, sidekiq is turned off to avoid unecessary billing.
+Run with:
+
+    heroku run bin/sidekiq -e production -C config/sidekiq.yml --app dw-staging
+
+ctrl + c when you are done to kill remote worker threads and stop the $$$
+
+Run `heroku ps` to see what processes are left running.
+
+### Sidekiq & Redis Monitoring
+Heroku:
+[http://dw-staging.herokuapp.com/sidekiq/](http://dw-staging.herokuapp.com/sidekiq/)- admin required
+
+********************************************************************************
+
+Development Environment Setup
+=============================
 ## Mac OS X specific
 Note: Ben has had bad luck with RailsInstaller for OS X. It does wierd things. We
 will be doing this step by step.
@@ -136,6 +173,8 @@ Not working on Mac? maybe ?? add the following to ~/.bash_profile
 ### Lost?
 Solid tutorial is available at [http://railsapps.github.com/installing-rails.html](http://railsapps.github.com/installing-rails.html)
 
+********************************************************************************
+
 Other
 -----
 
@@ -147,3 +186,30 @@ Other
     gem install foreman
     echo "RACK_ENV=development" >>.env
 
+Flush redis in production
+
+    $redis.flushall
+
+
+TODO
+----
+
+Figure out if kickstand is needed between sidekiq and mongoid to disconnect workers
+https://github.com/mongoid/kiqstand
+
+
+Create a new Heroku App from this repo
+--------------------------------------
+Use the JRuby buildpack commit that matches our version of jruby
+
+    heroku create --remote [NAMETHIS]
+
+
+Email config
+
+    heroku config:add GMAIL_USERNAME='FILL THIS IN'
+    heroku config:add GMAIL_PASSWORD='FILL THIS IN'
+
+Add config for Redis and MongoDB service providers
+
+Push code

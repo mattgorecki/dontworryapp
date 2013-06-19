@@ -28,15 +28,22 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'foreman', :require => false
+  gem 'mongoid-rspec'
+  gem "factory_girl_rails", "~> 4.2.1"
+
+  # guard
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
+  # gem 'guard-livereload'
 end
 
 group :development do
   # Opens sent emails in browser.
   gem "letter_opener"
-  gem "brakeman"
-  gem "genghisapp", :require => false
-  gem "bson_ext", :require => false
+  # gem 'foreman', :require => false
+  # gem "brakeman"
+  # gem "genghisapp", :require => false
+  # gem "bson_ext", :require => false
 end
 
 # All environments

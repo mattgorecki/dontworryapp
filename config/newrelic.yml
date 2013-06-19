@@ -17,6 +17,10 @@ common: &default_settings
   #
   # agent_enabled: auto
   
+
+  # Added for Don't Worry App
+  dispatcher: 'puma'
+
   # Application Name Set this to be the name of your application as
   # you'd like it show up in New Relic. The service will then auto-map
   # instances of your application into an "application" on your

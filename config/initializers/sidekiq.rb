@@ -12,14 +12,21 @@ require 'sidekiq'
 ##
 ## Also change config/sidekiq.yml
 
+if Rails.env.production? 
+  redis_url = ENV["REDISCLOUD_URL"]
+else
+  rails_env = ENV['RAILS_ENV'] || 'development'
+  redis_url = YAML.load_file(File.join(File.dirname(__FILE__), '..', '..', 'config', 'redis.yml'))[rails_env]
+  redis_url = "redis://#{redis_url}"
+end
+
 Sidekiq.configure_client do |config|
-  config.redis = { :size => 1 }
+  config.redis = { :size => 1, :url => redis_url, :namespace => 'dontworry' }
 end
 
 Sidekiq.configure_server do |config|
   # The config.redis is calculated by the 
   # concurrency value so you do not need to 
-  # specify this. For this demo I do 
-  # show it to understand the numbers
-  config.redis = { :size => 7 }
+  # specify this.
+  config.redis = { :size => 6, :url => redis_url, :namespace => 'dontworry' }
 end

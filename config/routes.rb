@@ -21,6 +21,9 @@ Dontworry::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end 
 
+  # Sidekiq monitoring url to know if we are getting behind.
+  require 'sidekiq/api'
+  match "queue-status" => proc { [200, {"Content-Type" => "text/plain"}, [Sidekiq::Queue.new.size < 100 ? "OK" : "UHOH" ]] }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
