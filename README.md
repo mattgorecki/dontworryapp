@@ -43,6 +43,11 @@ Genghis app: [http://localhost:5678/](http://localhost:5678/) - local only
     # stop
     genghisapp --kill
 
+Run tests
+=========
+    
+    guard
+
 ********************************************************************************
 
 Production
