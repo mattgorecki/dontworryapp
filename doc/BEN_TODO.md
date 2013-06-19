@@ -3,12 +3,26 @@ an associated record. May not happen much with embedded documents.
 mongoid.yml
   # identity_map_enabled: false
 
+ACTION                  TIME  DETAILS
+adventure_created     | nil   details
+
+time_start_set        | time
+time_end_set          | time
+time_alert_set        | time
+                      |
+worker_ran            | nil    nil
+worker_scheduled      | time
+
+snooze_recieved       | nil    nil
+check_in_recieved     | nil    nil
+
+adventure_archived    | nil
+
 
 adventure
     embeds_many :events
     event
         embedded_in :adventure
-
 
 ######################################
 class Adventure
