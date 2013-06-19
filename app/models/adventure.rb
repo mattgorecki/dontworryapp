@@ -10,5 +10,6 @@ class Adventure
 
   attr_accessible :description, :departure_time, :expected_return_time, :alert_time
 
-  embeds_many :events
+  embeds_many :events, class_name: "HistoryEvent"
+  belongs_to :user
 end

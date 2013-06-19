@@ -13,7 +13,7 @@ class CheckStatusWorker
     if unlocked?
       
       @adventure = Adventure.where(id: adventure_id).first
-      
+
       mark_worker_was_here
       determine_adventure_state
       take_action_based_on_state
@@ -25,7 +25,7 @@ class CheckStatusWorker
 
       puts "adventure #{adventure_id} was locked"
       # something is stuck
-      if (@current_worker_timestamp - @active_worker_timestamp) > 120
+      if (@current_worker_timestamp.to_i - @active_worker_timestamp.to_i) > 120
         # TODO: Log that bad is happening.
         # TODO: Clear stuck worker?
         # TODO: Restart this stuff.
@@ -58,7 +58,7 @@ class CheckStatusWorker
 
   # Mark evidence that this worker ran.
   def mark_worker_was_here
-    # @adventure.event.create(subject: 'worker', verb: 'run')
+    @adventure.events.create(action: 'worker_ran')
   end
 
   def determine_adventure_state
