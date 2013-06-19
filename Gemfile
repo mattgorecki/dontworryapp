@@ -34,6 +34,8 @@ group :development, :test do
   # guard
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
+  gem "spork-rails"
+  gem 'guard-spork'
   # gem 'guard-livereload'
 end
 
