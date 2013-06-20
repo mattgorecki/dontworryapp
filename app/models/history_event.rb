@@ -21,6 +21,7 @@ end
 
 class ScheduleEvent < HistoryEvent
   field :time, type: Time
+  attr_accessible :time
 
   def past?
     time < Time.now
@@ -29,4 +30,5 @@ end
 
 class DetailEvent < HistoryEvent
   field :details, type: String
+  attr_accessible :details
 end
