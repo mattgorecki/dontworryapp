@@ -6,7 +6,7 @@ describe CheckStatusWorker do
   status_worker = CheckStatusWorker.new
 
   describe "perform_async" do
-    it 'should increment the job count' do
+    it 'should increment the sidekiq job count' do
       expect {
         CheckStatusWorker.perform_async(FactoryGirl.create(:adventure))
       }.to change(CheckStatusWorker.jobs, :size).by(1)

@@ -5,6 +5,8 @@ class HistoryEvent
   field :action, type: String
   field :ip, type: String, type: String, default: ->{ defined?(request) ? request.remote_ip : 'localhost' }
 
+  attr_accessible :action
+
   embedded_in :adventure
 
   before_update  :forbid_modification

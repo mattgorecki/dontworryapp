@@ -11,9 +11,20 @@ FactoryGirl.define do
     user
   end
 
+  factory :adventure1, :class => :adventure do
+    events  {[FactoryGirl.build(:history_event),FactoryGirl.build(:schedule_event)]}
+  end
+
   factory :history_event do
-    user
-    adventure
-    description "Lorem ipsum"
+    action "history_event"
+  end
+
+  factory :adventure_created, :class => :history_event do
+    action "adventure_created"
+  end
+
+  factory :schedule_event do
+    action 'factory_action'
+    time 1.minute.from_now
   end
 end
