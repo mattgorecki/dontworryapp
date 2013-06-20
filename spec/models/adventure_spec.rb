@@ -5,9 +5,11 @@ describe Adventure do
   user[:id] = 1
 
   it { should_not allow_mass_assignment_of(:user_id) }
-  it { should allow_mass_assignment_of(:description) }
-  it { should allow_mass_assignment_of(:departure_time) }
-  it { should allow_mass_assignment_of(:expected_return_time) }
-  it { should allow_mass_assignment_of(:alert_time) }
 
+  describe "#new" do
+    it "should create a new one" do
+      FactoryGirl.create(:adventure).should be_valid
+
+    end
+  end
 end
