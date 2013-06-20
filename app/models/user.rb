@@ -43,7 +43,7 @@ class User
   has_many :adventures
 
   def beta_invited?
-    unless self.class.dev_ids.include?(email)
+    unless self.class.dev_ids.include?(email) || Rails.env.test? || Rails.env.development?
     # unless BetaInvite.exists?(:email=>email)
       errors.add :email, "is not on our beta list"  
     end

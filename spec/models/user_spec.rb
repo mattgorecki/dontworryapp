@@ -4,6 +4,7 @@ describe User do
 
   describe "validations" do
     it "should fail validation if not beta_invited?" do
+      Rails.stub(env: ActiveSupport::StringInquirer.new("production"))
       FactoryGirl.build(:user).should_not be_valid
     end
     it "should validate emails if beta_invited?" do
