@@ -1,1 +1,4 @@
 :concurrency: 4
+:queues:
+  - [status_worker, 10]
+  - [default, 5]

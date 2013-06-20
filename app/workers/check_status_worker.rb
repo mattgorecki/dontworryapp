@@ -3,6 +3,7 @@
 
 class CheckStatusWorker
   include Sidekiq::Worker
+  sidekiq_options queue: :status_worker, retry: false, backtrace: true
 
   # core method called by Sidekiq
   def perform(adventure_id)
