@@ -37,6 +37,8 @@ group :development, :test do
   gem "spork-rails"
   gem 'guard-spork'
   # gem 'guard-livereload'
+
+  gem 'database_cleaner'
 end
 
 group :development do
