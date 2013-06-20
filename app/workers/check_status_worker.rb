@@ -64,14 +64,14 @@ class CheckStatusWorker
 
   def determine_adventure_state
     @adventure.events.each do |event|
-      puts event.inspect
+      # puts event.inspect
     end
     @adventure_state = 'not implented'
   end
 
   def take_action_based_on_state
     if @adventure_state == 'not implented'
-      puts 'nothing to see here'
+      # puts 'nothing to see here'
     end
   end
 
