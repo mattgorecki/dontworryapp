@@ -19,11 +19,15 @@ describe HistoryEvent do
 
   describe "#new" do
     it "should create a new one" do
-      adventure = FactoryGirl.create(:adventure)
-      event = adventure.events.create(action: 'new_event_created')
-      event.should be_valid
+      expect(event).to be_valid
     end
   end
+
+  it "should not allow updates" do
+    event.action = 'changing_event'
+    expect(event.save).to eq false
+  end
+  
 end
 
 
@@ -51,7 +55,7 @@ describe ScheduleEvent do
 
   describe "attributes" do
     it "should hold a time" do
-      event.time.should eq event_properties[:time]
+      expect(event.time).to eq(event_properties[:time])
     end
   end
 end

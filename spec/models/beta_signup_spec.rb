@@ -10,17 +10,17 @@ describe BetaSignup do
   
   it "should accept a valid email" do
     signup = BetaSignup.create(email: 'example1@example.com')
-    signup.should be_valid
+    expect(signup).to be_valid
   end
 
   it "should not accept a invalid email" do
     signup = BetaSignup.create(email: 'This is not an email address.')
-    signup.should_not be_valid
+    expect(signup).to_not be_valid
   end
 
   it "should not allow two of the same email" do
     signup1 = BetaSignup.create(email: 'example1@example.com')
     signup2 = BetaSignup.new(email: 'example1@example.com')
-    signup2.should_not be_valid
+    expect(signup2).to_not be_valid
   end
 end

@@ -10,7 +10,7 @@ describe User do
     it "should validate emails if beta_invited?" do
       valid_user = FactoryGirl.build(:user)
       valid_user.stub!(:beta_invited?).and_return(true)
-      valid_user.should have(0).errors_on(:email)
+      expect(valid_user).to have(0).errors_on(:email)
     end
   end
 
@@ -19,7 +19,7 @@ describe User do
       user = FactoryGirl.build(:user, email: 'leo@aol.com')
       user.stub!(:beta_invited?).and_return(true)
       user.save
-      user.email.should eq 'leo@aol.com'
+      expect(user.email).to eq 'leo@aol.com'
     end
   end
 end
