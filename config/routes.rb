@@ -13,6 +13,8 @@ Dontworry::Application.routes.draw do
       get :success
     end
   end
+
+  resources :adventures
     
 
   require 'sidekiq/web'
