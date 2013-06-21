@@ -75,6 +75,14 @@ class CheckStatusWorker
     end
   end
 
+  def reschedule_worker_at(time)
+    CheckStatusWorker.perform_at(time, @adventure.id)
+  end
+
+  def reschedule_worker_in(duration)
+    CheckStatusWorker.perform_in(duration, @adventure.id)
+  end
+
   def record_actions
 
   end
