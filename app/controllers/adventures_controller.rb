@@ -45,6 +45,8 @@ class AdventuresController < ApplicationController
 
     respond_to do |format|
       if @adventure.save
+        parse_data(params[:adventure][:data]) if params[:adventure][:data]
+
         format.html { redirect_to @adventure, notice: 'Adventure was successfully created.' }
         format.json { render json: @adventure, status: :created, location: @adventure }
       else
@@ -61,6 +63,8 @@ class AdventuresController < ApplicationController
 
     respond_to do |format|
       if @adventure.update_attributes(params[:adventure])
+        parse_data(params[:adventure][:data]) if params[:adventure][:data]
+
         format.html { redirect_to @adventure, notice: 'Adventure was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,6 +83,23 @@ class AdventuresController < ApplicationController
     respond_to do |format|
       format.html { redirect_to adventures_url }
       format.json { head :no_content }
+    end
+  end
+
+private
+
+  def parse_data(data)
+    data.each do |key,value|
+      unless value == ""
+        case key
+        when 'description'
+          @adventure.description = value
+        when 'start_time'
+          @adventure.start_time = value
+        when 'finish_time'
+          @adventure.finish_time = value
+        end
+      end
     end
   end
 end

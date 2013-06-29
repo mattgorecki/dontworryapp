@@ -9,7 +9,7 @@
 
 <% @adventures.each do |adventure| %>
   <tr>
-    <td><%= link_to 'Show', adventure %></td>
+    <td><%= link_to truncate(adventure.description, lenght: 20), adventure %></td>
     <td><%= link_to 'Edit', edit_adventure_path(adventure) %></td>
     <td><%= link_to 'Destroy', adventure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

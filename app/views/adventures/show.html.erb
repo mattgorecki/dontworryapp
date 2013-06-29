@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<h3><%= @adventure.description %></h3>
+
+
+<hr>
+<h3>Evidence Log</h3>
+<% @adventure.events.each do |event| %>
+  <%= format_action(event) %> - <%= event.created_at.to_s(:long_time_12) %><br>
+<% end %>
 
 <%= link_to 'Edit', edit_adventure_path(@adventure) %> |
 <%= link_to 'Back', adventures_path %>

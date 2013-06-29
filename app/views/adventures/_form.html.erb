@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <%= f.fields_for(:data) do |data| %>
+    <div class="field">
+      <%= data.text_field :description, placeholder: "Adventure Description..." %>
+    </div>
+    <div class="field">
+      <%= data.text_field :start_time, placeholder: "Start Time" %>
+    </div>
+    <div class="field">
+      <%= data.text_field :finish_time, placeholder: "Expected Return" %>
+    </div>
+
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

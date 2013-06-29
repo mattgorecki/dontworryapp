@@ -11,7 +11,6 @@ class Adventure
 
   after_create :add_event_adventure_created
 
-
   def add_event_adventure_created
     events.create(action: 'adventure_created')
   end
@@ -30,4 +29,32 @@ class Adventure
     end
     base_events.count == 0
   end
+
+  def description
+    description_event = events.where(action: 'details_description_set').last
+    description_event ? description_event.details : ''
+  end
+
+  def description=(description)
+    events.create({action: 'details_description_set', details: description}, DetailEvent)
+  end
+
+  def start_time
+    start = events.where(action: 'time_start_set').last
+    start ? start.time : ''
+  end
+
+  def start_time=(time)
+    events.create({action: 'time_start_set', time: time}, ScheduleEvent)
+  end
+
+  def finish_time
+    finish = events.where(action: 'time_finish_set').last
+    finish ? finish.time : ''
+  end
+
+  def finish_time=(time)
+    events.create({action: 'time_finish_set', time: time}, ScheduleEvent)
+  end
+
 end

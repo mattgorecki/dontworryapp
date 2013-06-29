@@ -61,5 +61,60 @@ describe Adventure do
         expect(adventure.validate_base_events_exist).to eq(false)
       end
     end
+
+    describe "#description" do
+      it "should find the last saved description" do
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Walk Happy Trails')
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now + 1.minute)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climb KickAss Mountain')
+        expect(adventure.description).to eq('Climb KickAss Mountain')
+      end
+    end
+
+    describe "#description=" do
+      it "should create a new description event" do
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Walk Happy Trails')
+        adventure.description = 'Climb KickAss Mountain'
+        expect(adventure.description).to eq('Climb KickAss Mountain')
+      end
+    end
+
+
+    describe "#start_time" do
+      it "should find the last saved time event" do
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Walk Happy Trails')
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now + 1.minute)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climb KickAss Mountain')
+        expect(adventure.start_time.to_i).to eq((Time.now.utc + 1.minute).to_i)
+      end
+    end
+
+    describe "#start_time=" do
+      it "should create a new time event" do
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
+        adventure.start_time = Time.now + 1.minute
+        expect(adventure.start_time.to_i).to eq((Time.now.utc + 1.minute).to_i)
+      end
+    end
+
+    describe "#finish_time" do
+      it "should find the last saved time event" do
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Walk Happy Trails')
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climb KickAss Mountain')
+        expect(adventure.finish_time.to_i).to eq((Time.now.utc + 1.minute).to_i)
+      end
+    end
+
+    describe "#finish_time=" do
+      it "should create a new time event" do
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now)
+        adventure.finish_time = Time.now + 1.minute
+        expect(adventure.finish_time.to_i).to eq((Time.now.utc + 1.minute).to_i)
+      end
+    end
   end
 end
