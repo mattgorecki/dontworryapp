@@ -45,7 +45,7 @@ class AdventuresController < ApplicationController
 
     respond_to do |format|
       if @adventure.save
-        parse_data(params[:adventure][:data]) if params[:adventure][:data]
+        parse_data(params[:adventure]) if params[:adventure]
 
         format.html { redirect_to @adventure, notice: 'Adventure was successfully created.' }
         format.json { render json: @adventure, status: :created, location: @adventure }
@@ -63,7 +63,7 @@ class AdventuresController < ApplicationController
 
     respond_to do |format|
       if @adventure.update_attributes(params[:adventure])
-        parse_data(params[:adventure][:data]) if params[:adventure][:data]
+        parse_data(params[:adventure]) if params[:adventure]
 
         format.html { redirect_to @adventure, notice: 'Adventure was successfully updated.' }
         format.json { head :no_content }

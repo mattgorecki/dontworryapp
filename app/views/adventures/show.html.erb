@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h3><%= @adventure.description %></h3>
-
+<b>Start Time:</b> <%= @adventure.start_time.to_s(:long_time_12) %><br>
+<b>Finish Time:</b> <%= @adventure.finish_time.to_s(:long_time_12) %>
 
 <hr>
 <h3>Evidence Log</h3>

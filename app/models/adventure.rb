@@ -45,6 +45,7 @@ class Adventure
   end
 
   def start_time=(time)
+    time = Chronic.parse(time) if time.is_a? String
     events.create({action: 'time_start_set', time: time}, ScheduleEvent)
   end
 
@@ -54,6 +55,7 @@ class Adventure
   end
 
   def finish_time=(time)
+    time = Chronic.parse(time) if time.is_a? String
     events.create({action: 'time_finish_set', time: time}, ScheduleEvent)
   end
 
