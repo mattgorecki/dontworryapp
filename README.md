@@ -71,6 +71,9 @@ Heroku:
 Staging
 =======
 
+    heroku config:add RACK_ENV='staging' --app dw-staging
+    heroku config:add RAILS_ENV='staging' --app dw-staging
+
 During the development stage, sidekiq is turned off to avoid unecessary billing.
 Run with:
 
