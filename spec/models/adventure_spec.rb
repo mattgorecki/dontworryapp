@@ -7,6 +7,7 @@ describe Adventure do
   it { should_not allow_mass_assignment_of(:user_id) }
   
 
+
   describe "#new" do
     it "should create a new one" do
       expect(adventure).to be_valid
@@ -78,6 +79,13 @@ describe Adventure do
         adventure.description = 'Climb KickAss Mountain'
         expect(adventure.description).to eq('Climb KickAss Mountain')
       end
+
+      it "should not create a new description event if unchanged" do
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Walk Happy Trails')
+        count = adventure.events.count
+        adventure.description = 'Walk Happy Trails'
+        expect(adventure.events.count).to eq(count)
+      end
     end
 
 
@@ -93,9 +101,26 @@ describe Adventure do
 
     describe "#start_time=" do
       it "should create a new time event" do
+        Timecop.freeze
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
         adventure.start_time = Time.now + 1.minute
-        expect(adventure.start_time.to_i).to eq((Time.now.utc + 1.minute).to_i)
+        expect(adventure.start_time.utc).to eq((Time.now.utc + 1.minute))
+      end
+
+      it "should not create a new time event if time unchanged" do
+        Timecop.freeze
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
+        count = adventure.events.count
+        adventure.start_time = Time.now
+        expect(adventure.events.count).to eq(count)
+      end
+
+      it "should not create a new time event if time unchanged STRING" do
+        Timecop.freeze
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
+        count = adventure.events.count
+        adventure.start_time = Time.now.utc.to_s
+        expect(adventure.events.count).to eq(count)
       end
     end
 
@@ -111,9 +136,26 @@ describe Adventure do
 
     describe "#finish_time=" do
       it "should create a new time event" do
+        Timecop.freeze
         adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now)
         adventure.finish_time = Time.now + 1.minute
         expect(adventure.finish_time.to_i).to eq((Time.now.utc + 1.minute).to_i)
+      end
+
+      it "should not create a new time event if time unchanged" do
+        Timecop.freeze
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now)
+        count = adventure.events.count
+        adventure.finish_time = Time.now
+        expect(adventure.events.count).to eq(count)
+      end
+
+      it "should not create a new time event if time unchanged STRING" do
+        Timecop.freeze
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now)
+        count = adventure.events.count
+        adventure.finish_time = Time.now.utc.to_s
+        expect(adventure.events.count).to eq(count)
       end
     end
   end

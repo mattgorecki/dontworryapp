@@ -36,7 +36,9 @@ class Adventure
   end
 
   def description=(description)
-    events.create({action: 'details_description_set', details: description}, DetailEvent)
+    unless self.description == description
+      events.create({action: 'details_description_set', details: description}, DetailEvent)
+    end
   end
 
   def start_time
@@ -46,7 +48,9 @@ class Adventure
 
   def start_time=(time)
     time = Chronic.parse(time) if time.is_a? String
-    events.create({action: 'time_start_set', time: time}, ScheduleEvent)
+    unless start_time.to_i == time.to_i
+      events.create({action: 'time_start_set', time: time}, ScheduleEvent)
+    end
   end
 
   def finish_time
@@ -56,7 +60,9 @@ class Adventure
 
   def finish_time=(time)
     time = Chronic.parse(time) if time.is_a? String
-    events.create({action: 'time_finish_set', time: time}, ScheduleEvent)
+    unless finish_time.to_i == time.to_i
+      events.create({action: 'time_finish_set', time: time}, ScheduleEvent)
+    end
   end
 
 end
