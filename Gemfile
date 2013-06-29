@@ -50,6 +50,10 @@ group :development do
   # gem "bson_ext", :require => false
 end
 
+group :test do
+  gem "timecop"
+end
+
 # All environments
 gem 'jquery-rails'
 gem 'mongoid'
