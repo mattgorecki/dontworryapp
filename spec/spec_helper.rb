@@ -37,6 +37,7 @@ Spork.prefork do
 
     config.before(:each) do
       DatabaseCleaner.start
+      Timecop.return
     end
 
     config.after(:each) do
