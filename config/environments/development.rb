@@ -33,7 +33,7 @@ Dontworry::Application.configure do
   config.action_mailer.delivery_method = :letter_opener
 
   # Enable threaded mode
-  config.threadsafe!
+  # config.threadsafe!
 
   # MongoDB log levels
   # Mongoid.logger.level = Logger::DEBUG
