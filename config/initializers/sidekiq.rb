@@ -12,7 +12,7 @@ require 'sidekiq'
 ##
 ## Also change config/sidekiq.yml
 
-if Rails.env.production? 
+if Rails.env.production? || Rails.env.staging?
   redis_url = ENV["REDISCLOUD_URL"]
 else
   rails_env = ENV['RAILS_ENV'] || 'development'
