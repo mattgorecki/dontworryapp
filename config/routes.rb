@@ -6,7 +6,7 @@ Dontworry::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "static_pages#home"
+  root :to => "pages#home"
 
   resources :beta_signup, controller: "beta_signups" do
     collection do
