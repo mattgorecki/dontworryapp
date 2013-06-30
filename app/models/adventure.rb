@@ -4,9 +4,9 @@ class Adventure
 
   field :user_id, type: String
 
-  attr_accessible :events
+  attr_accessible :events, :start_time, :finish_time, :description
 
-  embeds_many :events, class_name: "HistoryEvent"
+  embeds_many :events, class_name: "HistoryEvent", cascade_callbacks: true
   belongs_to :user
 
   after_create :add_event_adventure_created
@@ -16,12 +16,19 @@ class Adventure
   end
 
   def validate_base_events_exist
+    # base_events = %w{
+    #   adventure_created
+    #   details_description_set
+    #   time_start_set
+    #   time_end_set
+    #   time_alert_set
+    #   worker_scheduled
+    # }
     base_events = %w{
       adventure_created
+      details_description_set
       time_start_set
-      time_end_set
-      time_alert_set
-      worker_scheduled
+      time_finish_set
     }
     events.each do |event|
       return false unless event.valid?
@@ -43,7 +50,7 @@ class Adventure
 
   def start_time
     start = events.where(action: 'time_start_set').last
-    start ? start.time : ''
+    start ? start.time : nil
   end
 
   def start_time=(time)
@@ -55,7 +62,7 @@ class Adventure
 
   def finish_time
     finish = events.where(action: 'time_finish_set').last
-    finish ? finish.time : ''
+    finish ? finish.time : nil
   end
 
   def finish_time=(time)

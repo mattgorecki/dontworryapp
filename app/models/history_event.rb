@@ -23,8 +23,29 @@ class ScheduleEvent < HistoryEvent
   field :time, type: Time
   attr_accessible :time
 
+  before_save :validate_future_start_time
+  validate :validate_presence_of_finish_time
+
   def past?
     time < Time.now
+  end
+
+  def validate_future_start_time
+    if action == 'time_start_set' && time < Time.now - 1.minute
+      self.time = Time.now
+      if self._parent.class == Adventure
+        self._parent.errors[:base] << "Start time cannot be set to past."
+      end
+    end
+  end
+
+  def validate_presence_of_finish_time
+    if action == 'time_finish_set' && time == nil
+      if self._parent.class == Adventure 
+        self._parent.errors[:finish_time] << "cannot be blank."
+        # errors[:finish_time] << "cannot be blank."
+      end
+    end
   end
 end
 

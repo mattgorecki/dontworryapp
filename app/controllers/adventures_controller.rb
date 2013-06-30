@@ -16,9 +16,13 @@ class AdventuresController < ApplicationController
   def show
     @adventure = Adventure.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @adventure }
+    if @adventure.validate_base_events_exist == true
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @adventure }
+      end
+    else
+      redirect_to edit_adventure_path(@adventure), notice: "Missing input"
     end
   end
 
@@ -41,12 +45,10 @@ class AdventuresController < ApplicationController
   # POST /adventures
   # POST /adventures.json
   def create
-    @adventure = Adventure.new(params[:adventure])
+    @adventure = Adventure.new
 
     respond_to do |format|
-      if @adventure.save
-        parse_data(params[:adventure]) if params[:adventure]
-
+      if @adventure.save && @adventure.update_attributes(params[:adventure]) && @adventure.validate_base_events_exist
         format.html { redirect_to @adventure, notice: 'Adventure was successfully created.' }
         format.json { render json: @adventure, status: :created, location: @adventure }
       else
@@ -62,8 +64,7 @@ class AdventuresController < ApplicationController
     @adventure = Adventure.find(params[:id])
 
     respond_to do |format|
-      if @adventure.update_attributes(params[:adventure])
-        parse_data(params[:adventure]) if params[:adventure]
+      if @adventure.update_attributes(params[:adventure]) && @adventure.validate_base_events_exist
 
         format.html { redirect_to @adventure, notice: 'Adventure was successfully updated.' }
         format.json { head :no_content }
@@ -86,20 +87,4 @@ class AdventuresController < ApplicationController
     end
   end
 
-private
-
-  def parse_data(data)
-    data.each do |key,value|
-      unless value == ""
-        case key
-        when 'description'
-          @adventure.description = value
-        when 'start_time'
-          @adventure.start_time = value
-        when 'finish_time'
-          @adventure.finish_time = value
-        end
-      end
-    end
-  end
 end

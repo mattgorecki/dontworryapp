@@ -5,6 +5,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @adventures.each do |adventure| %>
@@ -12,6 +13,7 @@
     <td><%= link_to truncate(adventure.description, lenght: 20), adventure %></td>
     <td><%= link_to 'Edit', edit_adventure_path(adventure) %></td>
     <td><%= link_to 'Destroy', adventure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= 'NOT ACTIVATED' unless adventure.validate_base_events_exist %></td>
   </tr>
 <% end %>
 </table>

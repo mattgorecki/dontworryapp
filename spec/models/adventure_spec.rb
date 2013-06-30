@@ -27,21 +27,22 @@ describe Adventure do
       end
 
       it "should return true if all base_events are present" do
+        Timecop.freeze
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
-        adventure.events << ScheduleEvent.new(action: 'time_end_set', time: Time.now + 1.minute)
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
         expect(adventure.validate_base_events_exist).to eq(true)
       end
 
       it "should return false if time_start_set is missing" do
-        adventure.events << ScheduleEvent.new(action: 'time_end_set', time: Time.now + 1.minute)
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
         expect(adventure.validate_base_events_exist).to eq(false)
       end
 
-      it "should return false if time_end_set is missing" do
+      it "should return false if time_finish_set is missing" do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
@@ -50,14 +51,14 @@ describe Adventure do
 
       it "should return false if time_alert_set is missing" do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
-        adventure.events << ScheduleEvent.new(action: 'time_end_set', time: Time.now + 1.minute)
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
         expect(adventure.validate_base_events_exist).to eq(false)
       end
 
       it "should return false if worker_scheduled is missing" do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
-        adventure.events << ScheduleEvent.new(action: 'time_end_set', time: Time.now + 1.minute)
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
         expect(adventure.validate_base_events_exist).to eq(false)
       end
@@ -121,6 +122,13 @@ describe Adventure do
         count = adventure.events.count
         adventure.start_time = Time.now.utc.to_s
         expect(adventure.events.count).to eq(count)
+      end
+
+      it "should not accept times in the past" do
+        Timecop.freeze
+        count = adventure.events.count        
+        adventure.start_time = Time.now - 2.minutes
+        expect(adventure.start_time.to_i).to eq(Time.now.utc.to_i)
       end
     end
 
