@@ -31,6 +31,7 @@ describe Adventure do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
         adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climbing Kickass Mountain')
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
         expect(adventure.validate_base_events_exist).to eq(true)
       end
@@ -38,6 +39,7 @@ describe Adventure do
       it "should return false if time_start_set is missing" do
         adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climbing Kickass Mountain')
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
         expect(adventure.validate_base_events_exist).to eq(false)
       end
@@ -45,6 +47,7 @@ describe Adventure do
       it "should return false if time_finish_set is missing" do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climbing Kickass Mountain')
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
         expect(adventure.validate_base_events_exist).to eq(false)
       end
@@ -53,6 +56,7 @@ describe Adventure do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
         adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climbing Kickass Mountain')
         expect(adventure.validate_base_events_exist).to eq(false)
       end
 
@@ -60,7 +64,24 @@ describe Adventure do
         adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
         adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
         adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climbing Kickass Mountain')
         expect(adventure.validate_base_events_exist).to eq(false)
+      end
+    end
+
+    describe "#missing_base_events" do
+      it "should return an array with missing base_events" do
+        expect(adventure.missing_base_events.count).to eq(3)
+      end
+
+      it "should return an empty array if all base_events are present" do
+        Timecop.freeze
+        adventure.events << ScheduleEvent.new(action: 'time_start_set', time: Time.now)
+        adventure.events << ScheduleEvent.new(action: 'time_finish_set', time: Time.now + 1.minute)
+        adventure.events << ScheduleEvent.new(action: 'time_alert_set', time: Time.now + 2.minutes)
+        adventure.events << DetailEvent.new(action: 'details_description_set', details: 'Climbing Kickass Mountain')
+        adventure.events << ScheduleEvent.new(action: 'worker_scheduled', time: Time.now + 1.minute)
+        expect(adventure.missing_base_events).to eq([])
       end
     end
 

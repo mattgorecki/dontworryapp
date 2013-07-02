@@ -1,10 +1,18 @@
+ip is always localhost
+break out adventures_controller into more if else statements
+
+
 Check on mongo db config if you start using eager loading...aka prefetching
 an associated record. May not happen much with embedded documents.
 mongoid.yml
   # identity_map_enabled: false
 
+#######################################
+
 ACTION                  TIME  DETAILS
 adventure_created     | nil   details
+
+details_description_set
 
 time_start_set        | time
 time_end_set          | time
@@ -16,13 +24,8 @@ worker_scheduled      | time
 snooze_recieved       | nil    nil
 check_in_recieved     | nil    nil
 
-adventure_archived    | nil
+adventure_archived    | nil    nil
 
-
-adventure
-    embeds_many :events
-    event
-        embedded_in :adventure
 
 ######################################
 class Adventure

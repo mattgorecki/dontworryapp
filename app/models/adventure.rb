@@ -15,26 +15,37 @@ class Adventure
     events.create(action: 'adventure_created')
   end
 
-  def validate_base_events_exist
-    # base_events = %w{
-    #   adventure_created
-    #   details_description_set
-    #   time_start_set
-    #   time_end_set
+  def base_events
+    # NEED TO ENABLE
     #   time_alert_set
     #   worker_scheduled
-    # }
-    base_events = %w{
+    %w{
       adventure_created
       details_description_set
       time_start_set
       time_finish_set
     }
+  end
+
+  def validate_base_events_exist
+    base_events_clone = base_events.map(&:dup)
     events.each do |event|
       return false unless event.valid?
-      base_events.delete(event.action)
+      base_events_clone.delete(event.action)
     end
-    base_events.count == 0
+    base_events_clone.count == 0
+  end
+
+  def missing_base_events
+    base_events_clone = base_events.map(&:dup)
+    events.each do |event|
+      return false unless event.valid?
+      base_events_clone.delete(event.action)
+    end
+    base_events_clone.each do |event|
+      errors[event] << "cannot be blank."
+    end
+    base_events_clone
   end
 
   def description

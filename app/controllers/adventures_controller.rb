@@ -52,6 +52,9 @@ class AdventuresController < ApplicationController
         format.html { redirect_to @adventure, notice: 'Adventure was successfully created.' }
         format.json { render json: @adventure, status: :created, location: @adventure }
       else
+        @adventure.missing_base_events
+        # needed to save before adding events, rollback with destroy
+        @adventure.destroy
         format.html { render action: "new" }
         format.json { render json: @adventure.errors, status: :unprocessable_entity }
       end
@@ -69,6 +72,7 @@ class AdventuresController < ApplicationController
         format.html { redirect_to @adventure, notice: 'Adventure was successfully updated.' }
         format.json { head :no_content }
       else
+        @adventure.missing_base_events
         format.html { render action: "edit" }
         format.json { render json: @adventure.errors, status: :unprocessable_entity }
       end

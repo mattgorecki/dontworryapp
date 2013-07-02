@@ -23,6 +23,7 @@ class ScheduleEvent < HistoryEvent
   field :time, type: Time
   attr_accessible :time
 
+  validates_presence_of :time
   before_save :validate_future_start_time
   validate :validate_presence_of_finish_time
 
@@ -52,4 +53,6 @@ end
 class DetailEvent < HistoryEvent
   field :details, type: String
   attr_accessible :details
+
+  validates_presence_of :details
 end
